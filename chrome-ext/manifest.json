@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "name": "Pull Patrol",
+  "short_name": "Pull Patrol",
+  "description": "Pull Patrol",
+  "icons": {
+    "48": "img/icon48.png",
+    "96": "img/icon96.png",
+    "128": "img/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "action": {
+    "default_title": "Pull Patrol",
+    "default_icon": "img/icon96.png",
+    "default_popup": "popup/pull-patrol-popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ]
+}
