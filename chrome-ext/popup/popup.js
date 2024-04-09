@@ -1,5 +1,5 @@
 const log = (msg) => {
-	console.log(`OCTANETOPUS POPUP DIALOG | ${msg}`);
+	console.log(`pull-patrol POPUP DIALOG | ${msg}`);
 };
 
 let initialConfigStr;
@@ -10,10 +10,10 @@ let saveButton;
 
 const setDomElements = () => {
 	log('setDomElements');
-	configTextarea = document.getElementById('octanetopus-popup__content__config');
-	cancelButton = document.getElementById('octanetopus-popup-cancel-button');
-	defaultsButton = document.getElementById('octanetopus-popup-defaults-button');
-	saveButton = document.getElementById('octanetopus-popup-save-button');
+	configTextarea = document.getElementById('popup__content__config');
+	cancelButton = document.getElementById('popup-cancel-button');
+	defaultsButton = document.getElementById('popup-defaults-button');
+	saveButton = document.getElementById('popup-save-button');
 	configTextarea.addEventListener('keyup', onConfigChange);
 	cancelButton.addEventListener('click', onClickCancel);
 	defaultsButton.addEventListener('click', onClickDefaults);
@@ -36,8 +36,8 @@ const onPopupLoad = () => {
 	setDomElements();
 	loadValues({
 		[localStorageConfigKey]: '{}'
-	}, vals => {
-		initialConfigStr = JSON.stringify(JSON.parse(vals[localStorageConfigKey]), null, 2);
+	}, values => {
+		initialConfigStr = JSON.stringify(JSON.parse(values[localStorageConfigKey]), null, 2);
 		configTextarea.value = initialConfigStr;
 		onConfigChange();
 	});
@@ -47,7 +47,7 @@ const onConfigChange = () => {
 	log('onConfigChange');
 	const configOK = checkConfig();
 	const canSave = configOK && (initialConfigStr !== configTextarea.value);
-	const textAreaErrorClass = 'octanetopus-popup__content__config--error';
+	const textAreaErrorClass = 'popup__content__config--error';
 	if (configOK) {
 		configTextarea.classList.remove(textAreaErrorClass);
 	} else {

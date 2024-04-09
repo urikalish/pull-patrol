@@ -15,19 +15,19 @@ button[disabled] {
 	color: #ccc;
 }
 
-.octanetopus-popup-body {
+.popup-body {
 	margin: 0;
 	font-size: 16px;
 	color: #000;
 }
 
-.octanetopus-popup {
+.popup {
 	height: 570px;
 	width: 650px;
 	font-family: MetricWeb-Regular, arial, sans-serif;
 }
 
-.octanetopus-popup__header {
+.popup__header {
 	display: flex;
 	margin: 10px 10px 0 10px;
 	background-color: #444;
@@ -36,30 +36,30 @@ button[disabled] {
     padding: 10px;
 }
 
-.octanetopus-popup__header__image {
+.popup__header__image {
 	width: 30px;
 	height: 30px;
 }
 
-.octanetopus-popup__header__title {
+.popup__header__title {
 	margin-left: 5px;
 	font-size: 25px;
 	color: #fff;
 }
 
-.octanetopus-popup__header__version {
+.popup__header__version {
 	margin-left: 4px;
 	margin-top: 4px;
 	font-size: 12px;
 	color: #fff;
 }
 
-.octanetopus-popup__content {
+.popup__content {
 	height: 450px;
 	margin: 10px 10px 0 10px;
 }
 
-.octanetopus-popup__content__config {
+.popup__content__config {
 	width: 100%;
 	height: 100%;
 	outline: none;
@@ -72,11 +72,11 @@ button[disabled] {
 	resize: none;
 }
 
-.octanetopus-popup__content__config--error {
+.popup__content__config--error {
 	background-color: #600;
 }
 
-.octanetopus-popup__footer {
+.popup__footer {
 	display: flex;
     justify-content: flex-end;
     margin: 10px;
@@ -84,7 +84,7 @@ button[disabled] {
     border-top: 1px solid #ddd;
 }
 
-.octanetopus-popup__footer__button {
+.popup__footer__button {
 	margin-right: 0;
 	margin-left: 10px;
 	height: 25px;
@@ -92,7 +92,7 @@ button[disabled] {
     width: 80px;
     border: 1px solid #999;
     background-color: #fff;
-    outline: none !important;    
+    outline: none !important;
     font-size: 14px;
     cursor: pointer;
 }

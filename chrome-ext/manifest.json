@@ -16,10 +16,10 @@
   "action": {
     "default_title": "Pull Patrol",
     "default_icon": "img/icon96.png",
-    "default_popup": "popup/pull-patrol-popup.html"
+    "default_popup": "popup/popup.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background/background.js"
   },
   "web_accessible_resources": [
     {

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    <script src="../config/config.js"></script>
+    <script src="popup.js"></script>
+</head>
+<body class="popup-body">
+    <div class="popup">
+        <div class="popup__header">
+            <img src="../img/icon96.png" class="popup__header__image" alt="icon"/>
+            <span class="popup__header__title">pull-patrol</span>
+        </div>
+        <div class="popup__content">
+            <textarea id="popup__content__config" class="popup__content__config" title="PullPatrol Configuration"></textarea>
+        </div>
+        <div class="popup__footer">
+            <button id="popup-cancel-button" class="popup__footer__button">Cancel</button>
+            <button id="popup-defaults-button" class="popup__footer__button">Defaults</button>
+            <button id="popup-save-button" class="popup__footer__button" disabled="disabled">Save</button>
+        </div>
+    </div>
+</body>
+</html>
