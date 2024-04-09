@@ -4,6 +4,7 @@ const log = (msg) => {
 
 let initialConfigStr;
 let configTextarea;
+let goButton;
 let cancelButton;
 let defaultsButton;
 let saveButton;
@@ -11,10 +12,12 @@ let saveButton;
 const setDomElements = () => {
 	log('setDomElements');
 	configTextarea = document.getElementById('popup__content__config');
+	goButton = document.getElementById('popup-go-button');
 	cancelButton = document.getElementById('popup-cancel-button');
 	defaultsButton = document.getElementById('popup-defaults-button');
 	saveButton = document.getElementById('popup-save-button');
 	configTextarea.addEventListener('keyup', onConfigChange);
+	goButton.addEventListener('click', onClickGo);
 	cancelButton.addEventListener('click', onClickCancel);
 	defaultsButton.addEventListener('click', onClickDefaults);
 	saveButton.addEventListener('click', onClickSave);
@@ -82,6 +85,17 @@ const onClickSave = () => {
 		[localStorageConfigKey]: configTextarea.value.trim()
 	});
 	window.close();
+};
+
+const onClickGo = async () => {
+	log('onClickGo');
+	try {
+		const cnf = JSON.parse(configTextarea.value);
+		const myPrs = await getMyPRs(cnf.gitHub.baseUrl, cnf.gitHub.orgName, cnf.gitHub.repoName, cnf.gitHub.userName, cnf.gitHub.authToken);
+		console.log(`Found ${myPrs.length} PRs`);
+	} catch (error) {
+		log(error);
+	}
 };
 
 document.addEventListener('DOMContentLoaded', onPopupLoad, false);

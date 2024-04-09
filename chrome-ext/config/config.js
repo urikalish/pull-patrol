@@ -2,7 +2,9 @@ const localStorageConfigKey = 'pull-patrol-config';
 const defaultConfigObj = {
 	configVersion: 1,
 	gitHub: {
-		repoUrl: 'https://github.houston.softwaregrp.net/MQM/mqm/',
+		baseUrl: 'https://github.houston.softwaregrp.net',
+		orgName: 'MQM',
+		repoName: 'mqm',
 		userName: 'uri-kalish',
 		authToken: 'ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 	}
