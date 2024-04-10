@@ -11,7 +11,15 @@ async function getMyPRs(baseUrl, orgName, repoName, userName, authToken) {
 		try {
 			const res = await fetch(url, { headers });
 			prs = await res.json();
-			const myPrs = prs.filter(pr => pr.user.url.endsWith(`/${userName}`));
+			const myPrs = prs.filter(pr => {
+				if (pr.user.url.endsWith(`/${userName}`)) {
+					return true;
+				}
+				if (pr['requested_reviewers'] && pr['requested_reviewers'].length > 0) {
+					return !!pr['requested_reviewers'].find(rr => rr['login'] === userName);
+				}
+				return false;
+			});
 			myPrs.forEach(pr => {
 				const prRecord = {
 					id: pr.id,
