@@ -28,6 +28,16 @@ function setDomElements() {
 	saveButton.addEventListener('click', onClickSave);
 }
 
+function showConfig() {
+	log('showConfig');
+	popup.classList.toggle('show-config', true);
+}
+
+function hideConfig() {
+	log('hideConfig');
+	popup.classList.toggle('show-config', false);
+}
+
 function checkConfig() {
 	log('checkConfig');
 	const configStr = configTextarea.value;
@@ -80,12 +90,12 @@ function onConfigChange() {
 
 function onClickConfig() {
 	log('onClickConfig');
-	popup.classList.toggle('show-config', true);
+	showConfig();
 }
 
 function onClickCancel() {
 	log('onClickCancel');
-	popup.classList.toggle('show-config', false);
+	hideConfig();
 }
 
 function onClickDefaults() {

@@ -101,6 +101,12 @@ button[disabled] {
     cursor: pointer;
 }
 
-.hide {
-	display: none !important;
+.popup.show-config .popup__footer__button__config,
+.popup.show-config .popup__footer__button__go {
+	display: none;
+}
+.popup:not(.show-config) .popup__footer__button__cancel,
+.popup:not(.show-config) .popup__footer__button__defaults,
+.popup:not(.show-config) .popup__footer__button__save {
+	display: none;
 }
