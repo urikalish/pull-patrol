@@ -140,6 +140,30 @@ function createPRLine(pr) {
 	titleElm.innerText = pr.title;
 	lineTopElm.appendChild(titleElm);
 
+	const quickElm = document.createElement('div');
+	quickElm.classList.add('build-info');
+	const quickLed = document.createElement('div');
+	quickLed.classList.add('build-led');
+	quickLed.classList.add('build-led--green');
+	quickElm.appendChild(quickLed);
+	const quickTitle = document.createElement('div');
+	quickTitle.classList.add('build-title');
+	quickTitle.innerText = 'Q'
+	quickElm.appendChild(quickTitle);
+	lineTopElm.appendChild(quickElm);
+
+	const fullElm = document.createElement('div');
+	fullElm.classList.add('build-info');
+	const fullLed = document.createElement('div');
+	fullLed.classList.add('build-led');
+	fullLed.classList.add('build-led--green');
+	fullElm.appendChild(fullLed);
+	const fullTitle = document.createElement('div');
+	fullTitle.classList.add('build-title');
+	fullTitle.innerText = 'F'
+	fullElm.appendChild(fullTitle);
+	lineTopElm.appendChild(fullElm);
+
 	lineElm.appendChild(lineTopElm);
 
 	if (pr.requestedReviewers && pr.requestedReviewers.length > 0) {
