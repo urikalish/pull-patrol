@@ -26,6 +26,7 @@ async function getMyPRs(baseUrl, orgName, repoName, userName, authToken) {
 					htmlUrl: pr['html_url'],
 					state: pr.state,
 					title: pr.title,
+					branch: pr.head.ref,
 					requestedReviewers: pr['requested_reviewers'] ? pr['requested_reviewers'].map(rr => rr['login']) : []
 				}
 				//console.log('----------------------------------------')
