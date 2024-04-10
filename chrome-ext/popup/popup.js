@@ -158,6 +158,8 @@ function createPRLine(pr) {
 
 async function onClickGo() {
 	log('onClickGo');
+	goButton.setAttribute('disabled', 'disabled');
+	configButton.setAttribute('disabled', 'disabled');
 	try {
 		container.innerHTML = '';
 		const cnf = JSON.parse(configTextarea.value);
@@ -169,6 +171,9 @@ async function onClickGo() {
 		})
 	} catch (error) {
 		log(error);
+	} finally {
+		goButton.removeAttribute('disabled');
+		configButton.removeAttribute('disabled');
 	}
 }
 
