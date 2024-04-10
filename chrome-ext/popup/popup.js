@@ -9,7 +9,7 @@ let cancelButton;
 let defaultsButton;
 let saveButton;
 
-const setDomElements = () => {
+function setDomElements() {
 	log('setDomElements');
 	configTextarea = document.getElementById('popup__content__config');
 	goButton = document.getElementById('popup-go-button');
@@ -21,9 +21,9 @@ const setDomElements = () => {
 	cancelButton.addEventListener('click', onClickCancel);
 	defaultsButton.addEventListener('click', onClickDefaults);
 	saveButton.addEventListener('click', onClickSave);
-};
+}
 
-const checkConfig = () => {
+function checkConfig() {
 	log('checkConfig');
 	const configStr = configTextarea.value;
 	try {
@@ -32,21 +32,23 @@ const checkConfig = () => {
 	} catch (e) {
 		return false;
 	}
-};
+}
 
-const onPopupLoad = () => {
+function onPopupLoad() {
 	log('onPopupLoad');
 	setDomElements();
-	loadValues({
-		[localStorageConfigKey]: '{}'
-	}, values => {
-		initialConfigStr = JSON.stringify(JSON.parse(values[localStorageConfigKey]), null, 2);
+	loadConfig(configStr => {
+		if (!configStr) {
+			initialConfigStr = '{}';
+		} else {
+			initialConfigStr = JSON.stringify(JSON.parse(configStr), null, 2);
+		}
 		configTextarea.value = initialConfigStr;
 		onConfigChange();
 	});
-};
+}
 
-const onConfigChange = () => {
+function onConfigChange() {
 	log('onConfigChange');
 	const configOK = checkConfig();
 	const canSave = configOK && (initialConfigStr !== configTextarea.value);
@@ -66,28 +68,28 @@ const onConfigChange = () => {
 	} else {
 		saveButton.setAttribute('disabled', 'disabled');
 	}
-};
+}
 
-const onClickCancel = () => {
+function onClickCancel() {
 	log('onClickCancel');
 	window.close();
-};
+}
 
-const onClickDefaults = () => {
+function onClickDefaults() {
 	log('onClickDefaults');
 	configTextarea.value = JSON.stringify(defaultConfigObj, null, 2);
 	onConfigChange();
-};
+}
 
-const onClickSave = () => {
+function onClickSave() {
 	log('onClickSave');
 	saveValues({
 		[localStorageConfigKey]: configTextarea.value.trim()
 	});
 	window.close();
-};
+}
 
-const onClickGo = async () => {
+async function onClickGo() {
 	log('onClickGo');
 	try {
 		const cnf = JSON.parse(configTextarea.value);
@@ -96,6 +98,6 @@ const onClickGo = async () => {
 	} catch (error) {
 		log(error);
 	}
-};
+}
 
 document.addEventListener('DOMContentLoaded', onPopupLoad, false);
