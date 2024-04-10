@@ -13,8 +13,16 @@ async function getMyPRs(baseUrl, orgName, repoName, userName, authToken) {
 			prs = await res.json();
 			const myPrs = prs.filter(pr => pr.user.url.endsWith(`/${userName}`));
 			myPrs.forEach(pr => {
-				console.log(`id: ${pr.id}, state: ${pr.state}, title: ${pr.title}`);
-				allMyPrs.push(pr);
+				const prRecord = {
+					id: pr.id,
+					title: pr.title,
+					state: pr.state,
+					requestedReviewers: pr['requested_reviewers'] ? pr['requested_reviewers'].map(rr => rr['login']) : []
+				}
+				//console.log('----------------------------------------')
+				//console.log(JSON.stringify(pr));
+				//console.log(prRecord);
+				allMyPrs.push(prRecord);
 			})
 		} catch (error) {
 			console.log(error);
