@@ -115,6 +115,8 @@ button[disabled] {
 .popup__content__pr-state {
 	position: relative;
 	top: -2px;
+	width: 80px;
+	text-align: center;
 	border-radius: 4px;
 	padding: 2px 4px;
 	color: #fff;
