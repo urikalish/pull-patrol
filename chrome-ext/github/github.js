@@ -15,8 +15,9 @@ async function getMyPRs(baseUrl, orgName, repoName, userName, authToken) {
 			myPrs.forEach(pr => {
 				const prRecord = {
 					id: pr.id,
-					title: pr.title,
+					htmlUrl: pr['html_url'],
 					state: pr.state,
+					title: pr.title,
 					requestedReviewers: pr['requested_reviewers'] ? pr['requested_reviewers'].map(rr => rr['login']) : []
 				}
 				//console.log('----------------------------------------')

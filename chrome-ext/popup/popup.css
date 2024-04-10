@@ -4,6 +4,13 @@
 	box-sizing: border-box;
 }
 
+a,
+a:focus,
+a:active,
+a:visited {
+	color: #f55;
+}
+
 html {
 	margin: 0;
 	padding: 0;
@@ -23,7 +30,7 @@ button[disabled] {
 
 .popup {
 	height: 570px;
-	width: 650px;
+	width: 700px;
 	font-family: MetricWeb-Regular, arial, sans-serif;
 }
 
@@ -80,6 +87,49 @@ button[disabled] {
 	background-color: #600;
 }
 
+.popup__content__container {
+	height: 100%;
+	background-color: #444;
+	overflow: auto;
+}
+
+.popup__content__pr-line {
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-columns: 1fr;
+	background-color: #444;
+	color: #fff;
+	padding: 16px;
+}
+.popup__content__pr-line:nth-child(even) {
+	background-color: #222;
+}
+
+.popup__content__pr-line__top {
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: auto auto 1fr;
+	gap: 8px;
+}
+
+.popup__content__pr-state {
+	text-transform: uppercase;
+}
+
+.popup__content__pr-title {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.popup__content__pr-line__bottom {
+	margin-top: 8px;
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: 1fr;
+	gap: 10px;
+}
+
 .popup__footer {
 	display: flex;
     justify-content: flex-end;
@@ -102,7 +152,8 @@ button[disabled] {
 }
 
 .popup.show-config .popup__footer__button__config,
-.popup.show-config .popup__footer__button__go {
+.popup.show-config .popup__footer__button__go,
+.popup.show-config .popup__content__container {
 	display: none;
 }
 .popup:not(.show-config) .popup__footer__button__cancel,

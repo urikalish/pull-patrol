@@ -4,6 +4,7 @@ const log = (msg) => {
 
 let initialConfigStr;
 let popup;
+let container;
 let configTextarea;
 let configButton;
 let goButton;
@@ -15,6 +16,7 @@ function setDomElements() {
 	log('setDomElements');
 	configTextarea = document.getElementById('popup__content__config');
 	popup = document.getElementById('popup');
+	container = document.getElementById('popup__content__container');
 	goButton = document.getElementById('popup-go-button');
 	configButton = document.getElementById('popup-config-button');
 	cancelButton = document.getElementById('popup-cancel-button');
@@ -112,18 +114,61 @@ function onClickSave() {
 	window.close();
 }
 
+function createPRLine(pr) {
+	const lineElm = document.createElement('div');
+	lineElm.classList.add('popup__content__pr-line');
+
+	const lineTopElm = document.createElement('div');
+	lineTopElm.classList.add('popup__content__pr-line__top');
+
+	const idElm = document.createElement('a');
+	idElm.setAttribute('href', pr.htmlUrl);
+	idElm.setAttribute('target', '_blank');
+	idElm.classList.add('popup__content__pr-id');
+	idElm.innerText = pr.id;
+	lineTopElm.appendChild(idElm);
+
+	const stateElm = document.createElement('div');
+	stateElm.classList.add('popup__content__pr-state');
+	stateElm.innerText = pr.state;
+	lineTopElm.appendChild(stateElm);
+
+	const titleElm = document.createElement('div');
+	titleElm.classList.add('popup__content__pr-title');
+	titleElm.innerText = pr.title;
+	lineTopElm.appendChild(titleElm);
+
+	lineElm.appendChild(lineTopElm);
+
+	if (pr.requestedReviewers && pr.requestedReviewers.length > 0) {
+		const lineBottomElm = document.createElement('div');
+		lineBottomElm.classList.add('popup__content__pr-line__bottom');
+
+		const peopleElm = document.createElement('div');
+		peopleElm.classList.add('popup__content__pr-people');
+		peopleElm.innerText = pr.requestedReviewers;
+		lineBottomElm.appendChild(peopleElm);
+
+		lineElm.appendChild(lineBottomElm);
+	}
+
+	return lineElm;
+}
+
 async function onClickGo() {
 	log('onClickGo');
 	try {
+		container.innerHTML = '';
 		const cnf = JSON.parse(configTextarea.value);
 		const myPrs = await getMyPRs(cnf.gitHub.baseUrl, cnf.gitHub.orgName, cnf.gitHub.repoName, cnf.gitHub.userName, cnf.gitHub.authToken);
 		console.log(`Found ${myPrs.length} PRs`);
+		myPrs.forEach(pr => {
+			const prElm = createPRLine(pr);
+			container.appendChild(prElm);
+		})
 	} catch (error) {
 		log(error);
 	}
 }
 
 document.addEventListener('DOMContentLoaded', onPopupLoad, false);
-
-
-console.log(localStorageConfigKey);
