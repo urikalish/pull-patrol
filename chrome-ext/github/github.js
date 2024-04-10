@@ -18,6 +18,9 @@ async function getMyPRs(baseUrl, orgName, repoName, userName, authToken) {
 				if (pr['requested_reviewers'] && pr['requested_reviewers'].length > 0) {
 					return !!pr['requested_reviewers'].find(rr => rr['login'] === userName);
 				}
+				if (pr['assignees'] && pr['assignees'].length > 0) {
+					return !!pr['assignees'].find(rr => rr['login'] === userName);
+				}
 				return false;
 			});
 			myPrs.forEach(pr => {
@@ -27,7 +30,9 @@ async function getMyPRs(baseUrl, orgName, repoName, userName, authToken) {
 					state: pr.state,
 					title: pr.title,
 					branch: pr.head.ref,
-					requestedReviewers: pr['requested_reviewers'] ? pr['requested_reviewers'].map(rr => rr['login']) : []
+					requestedReviewers: pr['requested_reviewers'] ? pr['requested_reviewers'].map(rr => rr['login']) : [],
+					assignees: pr['assignees'] ? pr['assignees'].map(rr => rr['login']) : [],
+					prType: getPrType(pr['requested_reviewers'],pr['assignees'], userName)
 				}
 				//console.log('----------------------------------------')
 				//console.log(JSON.stringify(pr));
@@ -39,4 +44,21 @@ async function getMyPRs(baseUrl, orgName, repoName, userName, authToken) {
 		}
 	}
 	return allMyPrs;
+}
+function getPrType(reviewers, assignees, userName){
+	if (reviewers.length > 0){
+		for (let i=0; i< reviewers.length; i++) {
+			if (reviewers[i].login === userName){
+				return "reviewer";
+			}
+		}
+	}
+	if (assignees.length > 0){
+		for (let i=0; i< assignees.length; i++) {
+			if (assignees[i].login === userName){
+				return "assignee";
+			}
+		}
+	}
+	return "owner";
 }

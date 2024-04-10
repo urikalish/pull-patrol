@@ -22,6 +22,10 @@ button[disabled] {
 	color: #ccc;
 }
 
+.height--100 {
+	height: 100%;
+}
+
 .popup-body {
 	margin: 0;
 	font-size: 16px;
@@ -100,8 +104,22 @@ button[disabled] {
 	font-weight: 700;
 }
 
-.content--pr-line {
+.content--pr-people{
+	background-color: #cccccc;
+}
+
+.content--pr-people{
+	background-color: #999999;
+}
+
+.content--container.owner .content--pr-line.owner,
+.content--container.reviewer .content--pr-line.reviewer,
+.content--container.assignee .content--pr-line.assignee{
 	display: grid;
+}
+
+.content--pr-line {
+	display: none;
 	grid-template-rows: auto auto;
 	grid-template-columns: 1fr;
 	background-color: #eee;

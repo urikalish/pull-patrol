@@ -11,6 +11,15 @@ let goButton;
 let cancelButton;
 let defaultsButton;
 let saveButton;
+let toggleOwnerButton;
+let toggleReviewerButton;
+let toggleAssigneeButton;
+let toggleState = {
+    owner: true,
+    reviewer: true,
+    assignee: true
+}
+let myPrs;
 
 function setDomElements() {
 	log('setDomElements');
@@ -22,12 +31,18 @@ function setDomElements() {
 	cancelButton = document.getElementById('popup-cancel-button');
 	defaultsButton = document.getElementById('popup-defaults-button');
 	saveButton = document.getElementById('popup-save-button');
+    toggleReviewerButton = document.getElementById('popup-toggle-reviewer-button');
+    toggleOwnerButton = document.getElementById('popup-toggle-owner-button');
+    toggleAssigneeButton = document.getElementById('popup-toggle-assignee-button');
 	configTextarea.addEventListener('keyup', onConfigChange);
 	configButton.addEventListener('click', onClickConfig);
 	goButton.addEventListener('click', onClickGo);
 	cancelButton.addEventListener('click', onClickCancel);
 	defaultsButton.addEventListener('click', onClickDefaults);
 	saveButton.addEventListener('click', onClickSave);
+    toggleReviewerButton.addEventListener('click', ()=> onToggleRole('reviewer'))
+    toggleOwnerButton.addEventListener('click', ()=>onToggleRole('owner'))
+    toggleAssigneeButton.addEventListener('click', ()=>onToggleRole('assignee'))
 }
 
 function showConfig() {
@@ -117,6 +132,7 @@ function onClickSave() {
 function createPRLine(pr) {
 	const lineElm = document.createElement('div');
 	lineElm.classList.add('content--pr-line');
+    lineElm.classList.add(pr.prType);
 
 	const lineTopElm = document.createElement('div');
 	lineTopElm.classList.add('content--pr-line--top');
@@ -177,10 +193,25 @@ function createPRLine(pr) {
 
 		lineElm.appendChild(lineBottomElm);
 	}
+	if (pr.assignees && pr.assignees.length > 0) {
+		const lineBottomElm = document.createElement('div');
+		lineBottomElm.classList.add('content--pr-line--bottom');
+
+		const peopleElm = document.createElement('div');
+		peopleElm.classList.add('content--pr-assignees');
+		peopleElm.innerText = pr.assignees;
+		lineBottomElm.appendChild(peopleElm);
+
+		lineElm.appendChild(lineBottomElm);
+	}
 
 	return lineElm;
 }
-
+function onToggleRole(role) {
+    toggleState[role] = !toggleState[role];
+    console.log('toggle by '+role+':' + toggleState[role]);
+    container.classList.toggle(role, toggleState[role]);
+}
 async function onClickGo() {
 	log('onClickGo');
 	goButton.setAttribute('disabled', 'disabled');
@@ -188,8 +219,11 @@ async function onClickGo() {
 	try {
 		container.innerHTML = '';
 		const cnf = JSON.parse(configTextarea.value);
-		const myPrs = await getMyPRs(cnf.gitHub.baseUrl, cnf.gitHub.orgName, cnf.gitHub.repoName, cnf.gitHub.userName, cnf.gitHub.authToken);
+        myPrs = await getMyPRs(cnf.gitHub.baseUrl, cnf.gitHub.orgName, cnf.gitHub.repoName, cnf.gitHub.userName, cnf.gitHub.authToken);
 		console.log(`Found ${myPrs.length} PRs`);
+        console.log("toggle state for reviewer: " + toggleState.reviewer);
+        console.log("toggle state for owner: " + toggleState.owner);
+        console.log("toggle state for assignee: " + toggleState.assignee);
 		myPrs.forEach(pr => {
 			const prElm = createPRLine(pr);
 			container.appendChild(prElm);
