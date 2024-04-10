@@ -40,9 +40,9 @@ function setDomElements() {
 	cancelButton.addEventListener('click', onClickCancel);
 	defaultsButton.addEventListener('click', onClickDefaults);
 	saveButton.addEventListener('click', onClickSave);
-    toggleReviewerButton.addEventListener('click', ()=> onToggleRole('reviewer'))
-    toggleOwnerButton.addEventListener('click', ()=>onToggleRole('owner'))
-    toggleAssigneeButton.addEventListener('click', ()=>onToggleRole('assignee'))
+    toggleReviewerButton.addEventListener('click', (event)=> onToggleRole('reviewer', event.currentTarget))
+    toggleOwnerButton.addEventListener('click', (event)=>onToggleRole('owner', event.currentTarget))
+    toggleAssigneeButton.addEventListener('click', (event)=>onToggleRole('assignee', event.currentTarget))
 }
 
 function showConfig() {
@@ -207,10 +207,12 @@ function createPRLine(pr) {
 
 	return lineElm;
 }
-function onToggleRole(role) {
+function onToggleRole(role, button) {
+	button.classList.remove('button--toggle--'+toggleState[role]);
     toggleState[role] = !toggleState[role];
     console.log('toggle by '+role+':' + toggleState[role]);
     container.classList.toggle(role, toggleState[role]);
+	button.classList.add('button--toggle--'+toggleState[role]);
 }
 async function onClickGo() {
 	log('onClickGo');

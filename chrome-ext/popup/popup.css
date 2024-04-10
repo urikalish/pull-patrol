@@ -109,8 +109,29 @@ button[disabled] {
 }
 
 .content--pr-people{
-	background-color: #999999;
+	background-color: #dddddd;
 }
+
+.role-button{
+	top: 3px;
+	width: 70px;
+	bottom: 3px;
+	right: 3px;
+	border-radius: 23px;
+	background-color: #89c2da;
+	box-shadow: 0 0 16px #4b7a8d;
+	-webkit-transition: all .2s .1s, right .1s;
+	transition: all .2s .1s, right .1s;
+}
+
+.button--toggle--true {
+	background-color: #89c2da;
+}
+
+.button--toggle--false{
+	background: #444249;
+}
+
 
 .content--container.owner .content--pr-line.owner,
 .content--container.reviewer .content--pr-line.reviewer,
