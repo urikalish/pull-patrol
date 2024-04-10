@@ -3,7 +3,9 @@ const log = (msg) => {
 };
 
 let initialConfigStr;
+let popup;
 let configTextarea;
+let configButton;
 let goButton;
 let cancelButton;
 let defaultsButton;
@@ -12,11 +14,14 @@ let saveButton;
 function setDomElements() {
 	log('setDomElements');
 	configTextarea = document.getElementById('popup__content__config');
+	popup = document.getElementById('popup');
 	goButton = document.getElementById('popup-go-button');
+	configButton = document.getElementById('popup-config-button');
 	cancelButton = document.getElementById('popup-cancel-button');
 	defaultsButton = document.getElementById('popup-defaults-button');
 	saveButton = document.getElementById('popup-save-button');
 	configTextarea.addEventListener('keyup', onConfigChange);
+	configButton.addEventListener('click', onClickConfig);
 	goButton.addEventListener('click', onClickGo);
 	cancelButton.addEventListener('click', onClickCancel);
 	defaultsButton.addEventListener('click', onClickDefaults);
@@ -41,8 +46,10 @@ function onPopupLoad() {
 		const configStr = values[localStorageConfigKey] || '';
 		if (!configStr) {
 			initialConfigStr = JSON.stringify(getDefaultConfigObj(), null, 2);
+			popup.classList.toggle('show-config', true);
 		} else {
 			initialConfigStr = JSON.stringify(JSON.parse(configStr), null, 2);
+			popup.classList.toggle('show-config', false);
 		}
 		configTextarea.value = initialConfigStr;
 		onConfigChange();
@@ -71,9 +78,14 @@ function onConfigChange() {
 	}
 }
 
+function onClickConfig() {
+	log('onClickConfig');
+	popup.classList.toggle('show-config', true);
+}
+
 function onClickCancel() {
 	log('onClickCancel');
-	window.close();
+	popup.classList.toggle('show-config', false);
 }
 
 function onClickDefaults() {
