@@ -109,7 +109,7 @@ function onClickSave() {
 	saveValues({
 		[localStorageConfigKey]: configTextarea.value.trim()
 	});
-	window.close();
+	hideConfig();
 }
 
 async function onClickGo() {
