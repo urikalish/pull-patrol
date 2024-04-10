@@ -130,6 +130,7 @@ function createPRLine(pr) {
 
 	const stateElm = document.createElement('div');
 	stateElm.classList.add('popup__content__pr-state');
+	stateElm.classList.add(`popup__content__pr-state__${pr.state}`);
 	stateElm.innerText = pr.state;
 	lineTopElm.appendChild(stateElm);
 

@@ -5,9 +5,9 @@ async function getMyPRs(baseUrl, orgName, repoName, userName, authToken) {
 		'Accept': 'application/vnd.github.text+json',
 		'Authorization': `token ${authToken}`
 	};
-	for (let page = 1; page <= 3; page++) {
+	for (let page = 1; page <= 5; page++) {
 		let prs;
-		const url = `${baseUrl}/api/v3/repos/${orgName}/${repoName}/pulls?per_page=100&page=${page}`;
+		const url = `${baseUrl}/api/v3/repos/${orgName}/${repoName}/pulls?state=all&per_page=100&page=${page}`;
 		try {
 			const res = await fetch(url, { headers });
 			prs = await res.json();

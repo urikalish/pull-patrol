@@ -8,7 +8,7 @@ a,
 a:focus,
 a:active,
 a:visited {
-	color: #f55;
+	color: #0073e7;
 }
 
 html {
@@ -89,7 +89,7 @@ button[disabled] {
 
 .popup__content__container {
 	height: 100%;
-	background-color: #444;
+	background-color: #fff;
 	overflow: auto;
 }
 
@@ -97,12 +97,12 @@ button[disabled] {
 	display: grid;
 	grid-template-rows: auto auto;
 	grid-template-columns: 1fr;
-	background-color: #444;
-	color: #fff;
+	background-color: #eee;
+	color: #333;
 	padding: 16px;
 }
 .popup__content__pr-line:nth-child(even) {
-	background-color: #222;
+	background-color: #ddd;
 }
 
 .popup__content__pr-line__top {
@@ -113,7 +113,17 @@ button[disabled] {
 }
 
 .popup__content__pr-state {
-	text-transform: uppercase;
+	position: relative;
+	top: -2px;
+	border-radius: 4px;
+	padding: 2px 4px;
+	color: #fff;
+}
+.popup__content__pr-state__open {
+	background-color: #2da44e;
+}
+.popup__content__pr-state__closed {
+	background-color: #8250df;
 }
 
 .popup__content__pr-title {
