@@ -14,9 +14,9 @@ let saveButton;
 
 function setDomElements() {
 	log('setDomElements');
-	configTextarea = document.getElementById('popup__content__config');
+	configTextarea = document.getElementById('content--config');
 	popup = document.getElementById('popup');
-	container = document.getElementById('popup__content__container');
+	container = document.getElementById('content--container');
 	goButton = document.getElementById('popup-go-button');
 	configButton = document.getElementById('popup-config-button');
 	cancelButton = document.getElementById('popup-cancel-button');
@@ -72,7 +72,7 @@ function onConfigChange() {
 	log('onConfigChange');
 	const configOK = checkConfig();
 	const canSave = configOK && (initialConfigStr !== configTextarea.value);
-	const textAreaErrorClass = 'popup__content__config--error';
+	const textAreaErrorClass = 'content--config--error';
 	if (configOK) {
 		configTextarea.classList.remove(textAreaErrorClass);
 	} else {
@@ -116,26 +116,26 @@ function onClickSave() {
 
 function createPRLine(pr) {
 	const lineElm = document.createElement('div');
-	lineElm.classList.add('popup__content__pr-line');
+	lineElm.classList.add('content--pr-line');
 
 	const lineTopElm = document.createElement('div');
-	lineTopElm.classList.add('popup__content__pr-line__top');
+	lineTopElm.classList.add('content--pr-line--top');
 
 	const idElm = document.createElement('a');
 	idElm.setAttribute('href', pr.htmlUrl);
-	idElm.setAttribute('target', '_blank');
-	idElm.classList.add('popup__content__pr-id');
+	idElm.setAttribute('target', '-blank');
+	idElm.classList.add('content--pr-id');
 	idElm.innerText = pr.id;
 	lineTopElm.appendChild(idElm);
 
 	const stateElm = document.createElement('div');
-	stateElm.classList.add('popup__content__pr-state');
-	stateElm.classList.add(`popup__content__pr-state__${pr.state}`);
+	stateElm.classList.add('content--pr-state');
+	stateElm.classList.add(`content--pr-state--${pr.state}`);
 	stateElm.innerText = pr.state;
 	lineTopElm.appendChild(stateElm);
 
 	const titleElm = document.createElement('div');
-	titleElm.classList.add('popup__content__pr-title');
+	titleElm.classList.add('content--pr-title');
 	titleElm.setAttribute('title', pr.title);
 	titleElm.innerText = pr.title;
 	lineTopElm.appendChild(titleElm);
@@ -144,10 +144,10 @@ function createPRLine(pr) {
 
 	if (pr.requestedReviewers && pr.requestedReviewers.length > 0) {
 		const lineBottomElm = document.createElement('div');
-		lineBottomElm.classList.add('popup__content__pr-line__bottom');
+		lineBottomElm.classList.add('content--pr-line--bottom');
 
 		const peopleElm = document.createElement('div');
-		peopleElm.classList.add('popup__content__pr-people');
+		peopleElm.classList.add('content--pr-people');
 		peopleElm.innerText = pr.requestedReviewers;
 		lineBottomElm.appendChild(peopleElm);
 

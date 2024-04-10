@@ -34,7 +34,7 @@ button[disabled] {
 	font-family: MetricWeb-Regular, arial, sans-serif;
 }
 
-.popup__header {
+.popup--header {
 	display: flex;
 	margin: 10px 10px 0 10px;
 	background-color: #444;
@@ -43,30 +43,30 @@ button[disabled] {
     padding: 10px;
 }
 
-.popup__header__image {
+.popup--header--image {
 	width: 30px;
 	height: 30px;
 }
 
-.popup__header__title {
+.popup--header--title {
 	margin-left: 5px;
 	font-size: 25px;
 	color: #fff;
 }
 
-.popup__header__version {
+.popup--header--version {
 	margin-left: 4px;
 	margin-top: 4px;
 	font-size: 12px;
 	color: #fff;
 }
 
-.popup__content {
+.content {
 	height: 450px;
 	margin: 10px 10px 0 10px;
 }
 
-.popup__content__config {
+.content--config {
 	display: none;
 	width: 100%;
 	height: 100%;
@@ -79,21 +79,26 @@ button[disabled] {
 	overflow-y: auto;
 	resize: none;
 }
-.popup.show-config .popup__content__config {
+.popup.show-config .content--config {
 	display: block;
 }
 
-.popup__content__config--error {
+.content--config--error {
 	background-color: #600;
 }
 
-.popup__content__container {
+.content--container {
 	height: 100%;
 	background-color: #fff;
 	overflow: auto;
 }
 
-.popup__content__pr-line {
+.section-title {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.content--pr-line {
 	display: grid;
 	grid-template-rows: auto auto;
 	grid-template-columns: 1fr;
@@ -101,18 +106,18 @@ button[disabled] {
 	color: #333;
 	padding: 16px;
 }
-.popup__content__pr-line:nth-child(even) {
+.content--pr-line:nth-child(even) {
 	background-color: #ddd;
 }
 
-.popup__content__pr-line__top {
+.content--pr-line--top {
 	display: grid;
 	grid-template-rows: auto;
 	grid-template-columns: auto auto 1fr;
 	gap: 8px;
 }
 
-.popup__content__pr-state {
+.content--pr-state {
 	margin-top: -2px;
 	width: 80px;
 	text-align: center;
@@ -120,20 +125,20 @@ button[disabled] {
 	padding: 2px 4px;
 	color: #fff;
 }
-.popup__content__pr-state__open {
+.content--pr-state--open {
 	background-color: #2da44e;
 }
-.popup__content__pr-state__closed {
+.content--pr-state--closed {
 	background-color: #8250df;
 }
 
-.popup__content__pr-title {
+.content--pr-title {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
-.popup__content__pr-line__bottom {
+.content--pr-line--bottom {
 	margin-top: 8px;
 	display: grid;
 	grid-template-rows: auto;
@@ -141,7 +146,7 @@ button[disabled] {
 	gap: 10px;
 }
 
-.popup__footer {
+.popup--footer {
 	display: flex;
     justify-content: flex-end;
     margin: 10px;
@@ -149,7 +154,7 @@ button[disabled] {
     border-top: 1px solid #ddd;
 }
 
-.popup__footer__button {
+.popup--footer--button {
 	margin-right: 0;
 	margin-left: 10px;
 	height: 25px;
@@ -162,13 +167,13 @@ button[disabled] {
     cursor: pointer;
 }
 
-.popup.show-config .popup__footer__button__config,
-.popup.show-config .popup__footer__button__go,
-.popup.show-config .popup__content__container {
+.popup.show-config .popup--footer--button--config,
+.popup.show-config .popup--footer--button--go,
+.popup.show-config .content--container {
 	display: none;
 }
-.popup:not(.show-config) .popup__footer__button__cancel,
-.popup:not(.show-config) .popup__footer__button__defaults,
-.popup:not(.show-config) .popup__footer__button__save {
+.popup:not(.show-config) .popup--footer--button--cancel,
+.popup:not(.show-config) .popup--footer--button--defaults,
+.popup:not(.show-config) .popup--footer--button--save {
 	display: none;
 }
