@@ -24,17 +24,4 @@ function saveValues(obj) {
 
 function getDefaultConfigObj() {
 	return defaultConfigObj;
-
-function loadConfig(cb) {
-	loadValues({[localStorageConfigKey]: ''},
-	values => {
-			cb(values[localStorageConfigKey] || '');
-		});
-	}
-}
-
-function saveConfig(configObj) {
-	saveValues({
-		[localStorageConfigKey]: JSON.stringify(configObj)
-	});
 }

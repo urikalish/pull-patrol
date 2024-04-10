@@ -37,15 +37,16 @@ function checkConfig() {
 function onPopupLoad() {
 	log('onPopupLoad');
 	setDomElements();
-	loadConfig(configStr => {
+	loadValues({[localStorageConfigKey]: ''}, (values) => {
+		const configStr = values[localStorageConfigKey] || '';
 		if (!configStr) {
-			initialConfigStr = '{}';
+			initialConfigStr = JSON.stringify(getDefaultConfigObj(), null, 2);
 		} else {
 			initialConfigStr = JSON.stringify(JSON.parse(configStr), null, 2);
 		}
 		configTextarea.value = initialConfigStr;
 		onConfigChange();
-	});
+	})
 }
 
 function onConfigChange() {
@@ -101,3 +102,6 @@ async function onClickGo() {
 }
 
 document.addEventListener('DOMContentLoaded', onPopupLoad, false);
+
+
+console.log(localStorageConfigKey);

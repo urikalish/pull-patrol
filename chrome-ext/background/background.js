@@ -1,5 +1,5 @@
-self.importScripts('../config/config.js');
-self.importScripts('../github/github.js');
+// self.importScripts('../config/config.js');
+// self.importScripts('../github/github.js');
 
 const log = (msg) => {
 	console.log(`pull-patrol BACKGROUND PAGE | ${msg}`);
