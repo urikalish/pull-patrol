@@ -136,6 +136,7 @@ function createPRLine(pr) {
 
 	const titleElm = document.createElement('div');
 	titleElm.classList.add('popup__content__pr-title');
+	titleElm.setAttribute('title', pr.title);
 	titleElm.innerText = pr.title;
 	lineTopElm.appendChild(titleElm);
 
