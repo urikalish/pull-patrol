@@ -34,7 +34,7 @@ checkAllJobsInJenkins = async (jenkins_job_url) => {
         const response = await sendRequestToJenkins(url);
         const builds = response.data.builds;
         const numbers = builds.map(b => b.number);
-        for (let jobNumber=0; jobNumber < 5; jobNumber++) {
+        for (let jobNumber=0; jobNumber < 20; jobNumber++) {
             let urlJob = `${url}/${numbers[jobNumber]}`;
             const res = await sendRequestToJenkins(urlJob);
             const jobResult = res.data.result;
