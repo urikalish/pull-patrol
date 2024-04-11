@@ -143,7 +143,7 @@ function createPRLine(pr, runsData) {
 
 	const idElm = document.createElement('a');
 	idElm.setAttribute('href', pr.htmlUrl);
-	idElm.setAttribute('target', '-blank');
+	idElm.setAttribute('target', '_blank');
 	idElm.classList.add('content--pr-id');
 	idElm.innerText = pr.id;
 	lineTopElm.appendChild(idElm);
@@ -171,6 +171,7 @@ function createPRLine(pr, runsData) {
 	quickTitle.innerText = 'Q'
 	if (quickUrl) {
 		quickTitle.setAttribute('href', quickUrl);
+		quickTitle.setAttribute('target', '_blank');
 	}
 	quickElm.appendChild(quickTitle);
 	lineTopElm.appendChild(quickElm);
@@ -186,6 +187,7 @@ function createPRLine(pr, runsData) {
 	fullTitle.innerText = 'F'
 	if (fullUrl) {
 		fullTitle.setAttribute('href', fullUrl);
+		fullTitle.setAttribute('target', '_blank');
 	}
 	fullElm.appendChild(fullTitle);
 	lineTopElm.appendChild(fullElm);
