@@ -94,11 +94,12 @@ button[disabled] {
 }
 
 .content--toggles {
-	height: 30px;
+	height: 40px;
+	padding: 3px 0;
 }
 
 .content--container {
-	height: calc(100% - 30px);
+	height: calc(100% - 40px);
 	background-color: #fff;
 	overflow: auto;
 }
@@ -117,23 +118,22 @@ button[disabled] {
 }
 
 .role-button{
-	top: 3px;
-	width: 70px;
-	bottom: 3px;
-	right: 3px;
-	border-radius: 23px;
-	background-color: #89c2da;
-	box-shadow: 0 0 16px #4b7a8d;
+	width: 80px;
+	height: 25px;
+	color: #fff;
+	border-radius: 4px;
+	background-color: #666;
+	box-shadow: 0 0 16px #999;
 	-webkit-transition: all .2s .1s, right .1s;
 	transition: all .2s .1s, right .1s;
 }
 
 .button--toggle--true {
-	background-color: #89c2da;
+	background-color: #696;
 }
 
 .button--toggle--false{
-	background: #444249;
+	background: #999;
 }
 
 .content--container.owner .content--pr-line.owner,
