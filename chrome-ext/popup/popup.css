@@ -249,6 +249,18 @@ button[disabled] {
 .build-title {
 }
 
+@keyframes led-running-animation {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.25;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .build-led {
 	position: relative;
 	top: -1px;
@@ -270,6 +282,7 @@ button[disabled] {
 .build-led--blue {
 	background-color: rgb(68, 110, 217);
 	box-shadow: rgb(68, 110, 217) 0 0 10px;
+	animation: led-running-animation 2s linear infinite;
 }
 .build-led--orange {
 	background-color: rgb(239, 183, 42);
@@ -327,3 +340,4 @@ button[disabled] {
 .hide {
 	display: none !important;
 }
+
