@@ -40,6 +40,7 @@ checkAllJobsInJenkins = async (jenkins_job_url) => {
             const jobResult = res.data.result;
             const jobInProgress = res.data.inProgress;
             const jobUrl = res.data.url;
+            const jobTimestamp = res.data.timestamp;
             // find username
             let action = res.data.actions.find(a => a.causes);
             const causes = action.causes.find(c => c.userId);
@@ -57,6 +58,7 @@ checkAllJobsInJenkins = async (jenkins_job_url) => {
                 result: jobResult,
                 inProgress: jobInProgress,
                 url: jobUrl,
+                timestamp: jobTimestamp,
                 userId,
                 username,
                 branchName
@@ -75,7 +77,7 @@ checkAllJobsInJenkins = async (jenkins_job_url) => {
       }, {});
 }
 
-//const interval = 5 * 1000;
+const interval = 5 * 60 * 1000;
 const quick_dev_url = `${JENKINS_BASE_URL}${JENKINS_CUSTOM_QUICK_DEV_URL}`;
 // const quick_prod_url = `${JENKINS_BASE_URL}${JENKINS_CUSTOM_QUICK_PROD_URL}`;
 const full_url = `${JENKINS_BASE_URL}${JENKINS_CUSTOM_FULL_URL}`;
@@ -86,10 +88,12 @@ init = async() => {
     dictQuickDevJobs = await checkAllJobsInJenkins(quick_dev_url);
     // dictQuickProdJobs = await checkAllJobsInJenkins(quick_prod_url);
     dictFullJobs = await checkAllJobsInJenkins(full_url);
-    console.log('finish initialization, server is ready..')
+    console.log('finish initialization, server is ready..');
 }
 
 init();
+
+setInterval(init, interval);
 
 app.use(cors());
 // Define a GET route

@@ -262,6 +262,18 @@ button[disabled] {
 	background-color: rgb(204, 0, 0);
 	box-shadow: rgb(204, 0, 0) 0 0 10px;
 }
+.build-led--blue {
+	background-color: rgb(68, 110, 217);
+	box-shadow: rgb(68, 110, 217) 0 0 10px;
+}
+.build-led--orange {
+	background-color: rgb(239, 183, 42);
+	box-shadow: rgb(239, 183, 42) 0 0 10px;
+}
+.build-led--black {
+	background-color: rgb(56, 56, 58);
+	box-shadow: rgb(56, 56, 58) 0 0 10px;
+}
 .build-led--gray {
 	background-color: rgb(204, 204, 204);
 	box-shadow: rgb(204, 204, 204) 0 0 10px;

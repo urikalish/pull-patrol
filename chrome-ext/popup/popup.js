@@ -160,11 +160,14 @@ function createPRLine(pr, runsData) {
 	quickElm.classList.add('build-info');
 	const quickLed = document.createElement('div');
 	quickLed.classList.add('build-led');
-	setRunColor(quickLed, runsData);
+	const quickUrl = setRunColor(quickLed, runsData.quick);
 	quickElm.appendChild(quickLed);
-	const quickTitle = document.createElement('div');
+	const quickTitle = document.createElement(quickUrl ? 'a' : 'div');
 	quickTitle.classList.add('build-title');
 	quickTitle.innerText = 'Q'
+	if (quickUrl) {
+		quickTitle.setAttribute('href', quickUrl);
+	}
 	quickElm.appendChild(quickTitle);
 	lineTopElm.appendChild(quickElm);
 
@@ -172,11 +175,14 @@ function createPRLine(pr, runsData) {
 	fullElm.classList.add('build-info');
 	const fullLed = document.createElement('div');
 	fullLed.classList.add('build-led');
-	setRunColor(fullLed, runsData);
+	const fullUrl = setRunColor(fullLed, runsData.full);
 	fullElm.appendChild(fullLed);
-	const fullTitle = document.createElement('div');
+	const fullTitle = document.createElement(fullUrl ? 'a' : 'div');
 	fullTitle.classList.add('build-title');
 	fullTitle.innerText = 'F'
+	if (fullUrl) {
+		fullTitle.setAttribute('href', fullUrl);
+	}
 	fullElm.appendChild(fullTitle);
 	lineTopElm.appendChild(fullElm);
 
@@ -207,17 +213,23 @@ function createPRLine(pr, runsData) {
 
 	return lineElm;
 }
-function setRunColor(element, runsData) {
-	if (runsData.quick) {
-		if (runsData.quick[0].inProgress) {
+function setRunColor(element, runData) {
+	if (runData) {
+		runData = runData.sort((rd1, rd2) => rd2.timestamp - rd1.timestamp); // sort by last run
+		if (runData[0].inProgress) {
 			element.classList.add('build-led--blue');
 		} else {
-			if (runsData.quick[0].result === 'SUCCESS') {
+			if (runData[0].result === 'SUCCESS') {
 				element.classList.add('build-led--green');
-			} else {
+			} else if (runData[0].result === 'FAILURE'){
 				element.classList.add('build-led--red');
+			} else if (runData[0].result === 'UNSTABLE'){
+				element.classList.add('build-led--orange');
+			} else {
+				element.classList.add('build-led--black');
 			}
 		}
+		return runData[0].url;
 	} else {
 		element.classList.add('build-led--gray');
 	}
