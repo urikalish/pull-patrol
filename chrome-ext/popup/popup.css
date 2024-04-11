@@ -69,6 +69,7 @@ button[disabled] {
 }
 
 .content {
+	position: relative;
 	height: 450px;
 	margin: 10px 10px 0 10px;
 }
@@ -287,4 +288,26 @@ button[disabled] {
 .build-led--gray::before {
 	background-color: rgb(204, 204, 204);
 	box-shadow: rgb(204, 204, 204) 0 0 4px;
+}
+
+@keyframes loading-spinner-animation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.loading-spinner {
+	width: 64px;
+	height: 64px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: loading-spinner-animation 2s linear infinite;
+}
+
+.hide {
+	display: none !important;
 }

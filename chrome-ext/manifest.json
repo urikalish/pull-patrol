@@ -22,7 +22,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "img/pr.png"
+        "img/pr.png",
+        "img/loading.svg"
       ],
       "matches": [
         "http://*/*",
