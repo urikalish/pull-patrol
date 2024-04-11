@@ -93,8 +93,12 @@ button[disabled] {
 	background-color: #600;
 }
 
+.content--toggles {
+	height: 30px;
+}
+
 .content--container {
-	height: 100%;
+	height: calc(100% - 30px);
 	background-color: #fff;
 	overflow: auto;
 }
@@ -131,7 +135,6 @@ button[disabled] {
 .button--toggle--false{
 	background: #444249;
 }
-
 
 .content--container.owner .content--pr-line.owner,
 .content--container.reviewer .content--pr-line.reviewer,
@@ -210,6 +213,7 @@ button[disabled] {
 
 .popup.show-config .popup--footer--button--config,
 .popup.show-config .popup--footer--button--go,
+.popup.show-config .content--toggles,
 .popup.show-config .content--container {
 	display: none;
 }
