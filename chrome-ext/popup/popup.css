@@ -164,6 +164,8 @@ button[disabled] {
 }
 
 .content--pr-line--top {
+	position: relative;
+	top: 3px;
 	display: grid;
 	grid-template-rows: auto;
 	grid-template-columns: auto auto 1fr auto auto;
