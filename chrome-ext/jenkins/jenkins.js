@@ -1,7 +1,7 @@
 async function getRunsByBranch(branchName) {
 
     const serverUrl = 'http://localhost:3000';
-    branchName = 'defect_2477138_modify_lookup_filter_message_idogal';
+    //branchName = 'defect_2477138_modify_lookup_filter_message_idogal';
 
 	const url = `${serverUrl}/getRunsByBranch?branchName=${branchName}`;
 

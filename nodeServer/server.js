@@ -18,14 +18,12 @@ const URL_SUFFIX= '/api/json'
 
 sendRequestToJenkins = async(url) => {
     const request = `${url}${URL_SUFFIX}`;
-    // console.log(request);
-    const response = await axios.get(request, {
+    return await axios.get(request, {
         auth: {
           username: JENKINS_USERNAME,
           password: JENKINS_API_TOKEN
         },
     });
-    return response;
 }
 
 checkAllJobsInJenkins = async (jenkins_job_url) => {
@@ -65,9 +63,9 @@ checkAllJobsInJenkins = async (jenkins_job_url) => {
             })
         }
     }
-    
+
     // convert array to dictionary
-    const dictionary = jobs.reduce((acc, jobs) => {
+    return jobs.reduce((acc, jobs) => {
         const key = jobs.branchName;
         if (!acc[key]) {
           acc[key] = [];
@@ -75,16 +73,14 @@ checkAllJobsInJenkins = async (jenkins_job_url) => {
         acc[key].push(jobs); // Add the entire object to the array under the key
         return acc;
       }, {});
-
-      return dictionary;
 }
 
-const interval = 5 * 1000;
+//const interval = 5 * 1000;
 const quick_dev_url = `${JENKINS_BASE_URL}${JENKINS_CUSTOM_QUICK_DEV_URL}`;
 // const quick_prod_url = `${JENKINS_BASE_URL}${JENKINS_CUSTOM_QUICK_PROD_URL}`;
 const full_url = `${JENKINS_BASE_URL}${JENKINS_CUSTOM_FULL_URL}`;
 
-let dictQuickDevJobs, dictQuickProdJobs, dictFullJobs;
+let dictQuickDevJobs, dictFullJobs;
 
 init = async() => {
     dictQuickDevJobs = await checkAllJobsInJenkins(quick_dev_url);
