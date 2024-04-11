@@ -21,12 +21,14 @@
         <div class="content">
             <textarea id="content--config" class="content--config" title="PullPatrol Configuration"></textarea>
             <div id="content--toggles" class="content--toggles hide">
-                <button id="popup-toggle-owner-button" class="role-button button--toggle--true"> Owner</button>
-                <button id="popup-toggle-reviewer-button" class="role-button button--toggle--true"> Reviewer</button>
-                <button id="popup-toggle-assignee-button" class="role-button button--toggle--true"> Assignee</button>
+                <button id="popup-toggle-open-button" class="role-button button--toggle--true">Open</button>
+                <button id="popup-toggle-closed-button" class="role-button button--toggle--true">Closed</button>
+                <button id="popup-toggle-owner-button" class="role-button button--toggle--true">Owner</button>
+                <button id="popup-toggle-reviewer-button" class="role-button button--toggle--true">Reviewer</button>
+                <button id="popup-toggle-assignee-button" class="role-button button--toggle--true">Assignee</button>
             </div>
             <img id="loading-spinner" src="../img/loading.svg" class="loading-spinner hide" alt="loading"/>
-            <div id="content--container" class="content--container owner reviewer assignee"></div>
+            <div id="content--container" class="content--container open closed owner reviewer assignee"></div>
         </div>
         <div class="popup--footer">
             <button id="popup-config-button" class="popup--footer--button popup--footer--button--config">Config</button>

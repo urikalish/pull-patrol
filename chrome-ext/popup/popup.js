@@ -13,11 +13,15 @@ let cancelButton;
 let defaultsButton;
 let saveButton;
 let toggles;
+let toggleOpenButton;
+let toggleClosedButton;
 let toggleOwnerButton;
 let toggleReviewerButton;
 let toggleAssigneeButton;
 let toggleState = {
-    owner: true,
+	open: true,
+	closed: true,
+	owner: true,
     reviewer: true,
     assignee: true
 }
@@ -35,6 +39,8 @@ function setDomElements() {
 	defaultsButton = document.getElementById('popup-defaults-button');
 	saveButton = document.getElementById('popup-save-button');
 	toggles = document.getElementById('content--toggles');
+	toggleOpenButton = document.getElementById('popup-toggle-open-button');
+	toggleClosedButton = document.getElementById('popup-toggle-closed-button');
     toggleReviewerButton = document.getElementById('popup-toggle-reviewer-button');
     toggleOwnerButton = document.getElementById('popup-toggle-owner-button');
     toggleAssigneeButton = document.getElementById('popup-toggle-assignee-button');
@@ -44,6 +50,8 @@ function setDomElements() {
 	cancelButton.addEventListener('click', onClickCancel);
 	defaultsButton.addEventListener('click', onClickDefaults);
 	saveButton.addEventListener('click', onClickSave);
+	toggleOpenButton.addEventListener('click', (event)=> onToggleRole('open', event.currentTarget))
+	toggleClosedButton.addEventListener('click', (event)=> onToggleRole('closed', event.currentTarget))
     toggleReviewerButton.addEventListener('click', (event)=> onToggleRole('reviewer', event.currentTarget))
     toggleOwnerButton.addEventListener('click', (event)=>onToggleRole('owner', event.currentTarget))
     toggleAssigneeButton.addEventListener('click', (event)=>onToggleRole('assignee', event.currentTarget))
@@ -137,6 +145,7 @@ function createPRLine(pr, runsData) {
 	const lineElm = document.createElement('div');
 	lineElm.classList.add('content--pr-line');
     lineElm.classList.add(pr.prType);
+	lineElm.classList.add(pr.state);
 
 	const lineTopElm = document.createElement('div');
 	lineTopElm.classList.add('content--pr-line--top');
