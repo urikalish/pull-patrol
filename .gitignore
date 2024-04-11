@@ -1,2 +1,4 @@
 .idea/
 *.iml
+./nodeServer/node_modules
+./nodeServer/.env

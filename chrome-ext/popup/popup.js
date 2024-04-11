@@ -129,7 +129,7 @@ function onClickSave() {
 	window.close();
 }
 
-function createPRLine(pr) {
+function createPRLine(pr, runsData) {
 	const lineElm = document.createElement('div');
 	lineElm.classList.add('content--pr-line');
     lineElm.classList.add(pr.prType);
@@ -160,7 +160,7 @@ function createPRLine(pr) {
 	quickElm.classList.add('build-info');
 	const quickLed = document.createElement('div');
 	quickLed.classList.add('build-led');
-	quickLed.classList.add('build-led--green');
+	setRunColor(quickLed, runsData);
 	quickElm.appendChild(quickLed);
 	const quickTitle = document.createElement('div');
 	quickTitle.classList.add('build-title');
@@ -172,7 +172,7 @@ function createPRLine(pr) {
 	fullElm.classList.add('build-info');
 	const fullLed = document.createElement('div');
 	fullLed.classList.add('build-led');
-	fullLed.classList.add('build-led--green');
+	setRunColor(fullLed, runsData);
 	fullElm.appendChild(fullLed);
 	const fullTitle = document.createElement('div');
 	fullTitle.classList.add('build-title');
@@ -187,7 +187,7 @@ function createPRLine(pr) {
 		lineBottomElm.classList.add('content--pr-line--bottom');
 
 		const peopleElm = document.createElement('div');
-		peopleElm.classList.add('content--pr-people');
+		peopleElm.classList.add('content--pr-reviewers');
 		peopleElm.innerText = pr.requestedReviewers;
 		lineBottomElm.appendChild(peopleElm);
 
@@ -197,15 +197,30 @@ function createPRLine(pr) {
 		const lineBottomElm = document.createElement('div');
 		lineBottomElm.classList.add('content--pr-line--bottom');
 
-		const peopleElm = document.createElement('div');
-		peopleElm.classList.add('content--pr-assignees');
-		peopleElm.innerText = pr.assignees;
-		lineBottomElm.appendChild(peopleElm);
+		const assigneesElm = document.createElement('div');
+		assigneesElm.classList.add('content--pr-assignees');
+		assigneesElm.innerText = pr.assignees;
+		lineBottomElm.appendChild(assigneesElm);
 
 		lineElm.appendChild(lineBottomElm);
 	}
 
 	return lineElm;
+}
+function setRunColor(element, runsData) {
+	if (runsData.quick) {
+		if (runsData.quick[0].inProgress) {
+			element.classList.add('build-led--blue');
+		} else {
+			if (runsData.quick[0].result === 'SUCCESS') {
+				element.classList.add('build-led--green');
+			} else {
+				element.classList.add('build-led--red');
+			}
+		}
+	} else {
+		element.classList.add('build-led--gray');
+	}
 }
 function onToggleRole(role, button) {
 	button.classList.remove('button--toggle--'+toggleState[role]);
@@ -226,8 +241,9 @@ async function onClickGo() {
         console.log("toggle state for reviewer: " + toggleState.reviewer);
         console.log("toggle state for owner: " + toggleState.owner);
         console.log("toggle state for assignee: " + toggleState.assignee);
-		myPrs.forEach(pr => {
-			const prElm = createPRLine(pr);
+		myPrs.forEach(async (pr) => {
+			const runsData = await getRunsByBranch(pr.branch);
+			const prElm = createPRLine(pr, runsData);
 			container.appendChild(prElm);
 		})
 	} catch (error) {

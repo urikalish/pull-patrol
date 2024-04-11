@@ -41,7 +41,7 @@ button[disabled] {
 .popup--header {
 	display: flex;
 	margin: 10px 10px 0 10px;
-	background-color: #444;
+	background-image: linear-gradient(90deg, #19224a 0, #222e61 25%, #23346a 65%, #146693 90%, #088cb2);
 	height: 50px;
 	line-height: 30px;
     padding: 10px;
@@ -109,27 +109,35 @@ button[disabled] {
 	font-weight: 700;
 }
 
-.content--pr-people{
-	background-color: #cccccc;
+.content--pr-reviewers {
+	border-radius: 4px;
+	padding: 4px 8px;
+	background-color: #aaa;
+}
+.content--pr-reviewers::before {
+	content: "Reviewers: ";
 }
 
-.content--pr-people{
-	background-color: #dddddd;
+.content--pr-assignees {
+	border-radius: 4px;
+	padding: 4px 8px;
+	background-color: #ccc;
+}
+.content--pr-assignees::before {
+	content: "Assignees: ";
 }
 
 .role-button{
 	width: 80px;
 	height: 25px;
 	color: #fff;
+	border: none;
 	border-radius: 4px;
 	background-color: #666;
-	box-shadow: 0 0 16px #999;
-	-webkit-transition: all .2s .1s, right .1s;
-	transition: all .2s .1s, right .1s;
 }
 
 .button--toggle--true {
-	background-color: #696;
+	background-color: #0073e7;
 }
 
 .button--toggle--false{
@@ -248,6 +256,10 @@ button[disabled] {
 .build-led--red {
 	background-color: rgb(204, 0, 0);
 	box-shadow: rgb(204, 0, 0) 0 0 10px;
+}
+.build-led--blue {
+	background-color: rgb(50, 22, 153);
+	box-shadow: rgb(50, 22, 153) 0 0 10px;
 }
 .build-led--gray {
 	background-color: rgb(204, 204, 204);
