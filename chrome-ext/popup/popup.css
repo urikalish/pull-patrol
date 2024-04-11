@@ -41,6 +41,7 @@ button[disabled] {
 .popup--header {
 	display: flex;
 	margin: 10px 10px 0 10px;
+	border-radius: 4px;
 	background-image: linear-gradient(90deg, #19224a 0, #222e61 25%, #23346a 65%, #146693 90%, #088cb2);
 	height: 50px;
 	line-height: 30px;
