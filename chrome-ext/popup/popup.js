@@ -187,7 +187,7 @@ function createPRLine(pr) {
 		lineBottomElm.classList.add('content--pr-line--bottom');
 
 		const peopleElm = document.createElement('div');
-		peopleElm.classList.add('content--pr-people');
+		peopleElm.classList.add('content--pr-reviewers');
 		peopleElm.innerText = pr.requestedReviewers;
 		lineBottomElm.appendChild(peopleElm);
 
@@ -197,10 +197,10 @@ function createPRLine(pr) {
 		const lineBottomElm = document.createElement('div');
 		lineBottomElm.classList.add('content--pr-line--bottom');
 
-		const peopleElm = document.createElement('div');
-		peopleElm.classList.add('content--pr-assignees');
-		peopleElm.innerText = pr.assignees;
-		lineBottomElm.appendChild(peopleElm);
+		const assigneesElm = document.createElement('div');
+		assigneesElm.classList.add('content--pr-assignees');
+		assigneesElm.innerText = pr.assignees;
+		lineBottomElm.appendChild(assigneesElm);
 
 		lineElm.appendChild(lineBottomElm);
 	}

@@ -109,12 +109,22 @@ button[disabled] {
 	font-weight: 700;
 }
 
-.content--pr-people{
-	background-color: #cccccc;
+.content--pr-reviewers {
+	border-radius: 4px;
+	padding: 4px 8px;
+	background-color: #aad;
+}
+.content--pr-reviewers::before {
+	content: "Reviewers: ";
 }
 
-.content--pr-people{
-	background-color: #dddddd;
+.content--pr-assignees {
+	border-radius: 4px;
+	padding: 4px 8px;
+	background-color: #ccc;
+}
+.content--pr-assignees::before {
+	content: "Assignees: ";
 }
 
 .role-button{
