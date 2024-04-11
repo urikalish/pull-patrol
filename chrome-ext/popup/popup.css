@@ -211,7 +211,6 @@ button[disabled] {
     justify-content: flex-end;
     margin: 10px;
 	padding-top: 10px;
-    border-top: 1px solid #ddd;
 	user-select: none;
 }
 
@@ -319,8 +318,8 @@ button[disabled] {
 	width: 64px;
 	height: 64px;
 	position: absolute;
-	top: calc(50%);
-	left: calc(50% - 32px);
+	top: calc(50% - 32px);
+	left: calc(50%);
 	animation: loading-spinner-animation 2s linear infinite;
 	user-select: none;
 }

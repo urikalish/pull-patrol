@@ -12,6 +12,7 @@ let goButton;
 let cancelButton;
 let defaultsButton;
 let saveButton;
+let toggles;
 let toggleOwnerButton;
 let toggleReviewerButton;
 let toggleAssigneeButton;
@@ -33,6 +34,7 @@ function setDomElements() {
 	cancelButton = document.getElementById('popup-cancel-button');
 	defaultsButton = document.getElementById('popup-defaults-button');
 	saveButton = document.getElementById('popup-save-button');
+	toggles = document.getElementById('content--toggles');
     toggleReviewerButton = document.getElementById('popup-toggle-reviewer-button');
     toggleOwnerButton = document.getElementById('popup-toggle-owner-button');
     toggleAssigneeButton = document.getElementById('popup-toggle-assignee-button');
@@ -248,6 +250,7 @@ async function onClickGo() {
 	goButton.setAttribute('disabled', 'disabled');
 	configButton.setAttribute('disabled', 'disabled');
 	loadingSpinner.classList.toggle('hide', false);
+	toggles.classList.toggle('hide', true);
 	try {
 		container.innerHTML = '';
 		const cnf = JSON.parse(configTextarea.value);
@@ -265,6 +268,7 @@ async function onClickGo() {
 		log(error);
 	} finally {
 		loadingSpinner.classList.toggle('hide', true);
+		toggles.classList.toggle('hide', false);
 		goButton.removeAttribute('disabled');
 		configButton.removeAttribute('disabled');
 	}
