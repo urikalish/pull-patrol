@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "version": "1.0.0",
-  "name": "Pull Patrol",
-  "short_name": "Pull Patrol",
-  "description": "Pull Patrol",
+  "name": "PullPatrol",
+  "short_name": "PullPatrol",
+  "description": "PullPatrol",
   "icons": {
     "512": "img/pr.png"
   },
@@ -12,7 +12,7 @@
     "scripting"
   ],
   "action": {
-    "default_title": "Pull Patrol",
+    "default_title": "PullPatrol",
     "default_icon": "img/pr.png",
     "default_popup": "popup/popup.html"
   },
