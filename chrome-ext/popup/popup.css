@@ -46,6 +46,7 @@ button[disabled] {
 	height: 50px;
 	line-height: 30px;
     padding: 10px;
+	user-select: none;
 }
 
 .popup--header--image {
@@ -98,6 +99,7 @@ button[disabled] {
 .content--toggles {
 	height: 40px;
 	padding: 5px 0;
+	user-select: none;
 }
 
 .content--container {
@@ -136,6 +138,7 @@ button[disabled] {
 	border: none;
 	border-radius: 4px;
 	background-color: #666;
+	cursor: pointer;
 }
 
 .button--toggle--true {
@@ -159,6 +162,7 @@ button[disabled] {
 	background-color: #eee;
 	color: #333;
 	padding: 16px;
+	user-select: none;
 }
 .content--pr-line:nth-child(even) {
 	background-color: #ddd;
@@ -208,6 +212,7 @@ button[disabled] {
     margin: 10px;
 	padding-top: 10px;
     border-top: 1px solid #ddd;
+	user-select: none;
 }
 
 .popup--footer--button {
@@ -306,6 +311,7 @@ button[disabled] {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	animation: loading-spinner-animation 2s linear infinite;
+	user-select: none;
 }
 
 .hide {
