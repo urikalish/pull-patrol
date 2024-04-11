@@ -116,7 +116,8 @@ button[disabled] {
 .content--pr-reviewers {
 	border-radius: 4px;
 	padding: 4px 8px;
-	background-color: #aaa;
+	background-color: #ccc;
+	border: 1px solid #bbb;
 }
 .content--pr-reviewers::before {
 	content: "Reviewers: ";
@@ -126,6 +127,7 @@ button[disabled] {
 	border-radius: 4px;
 	padding: 4px 8px;
 	background-color: #ccc;
+	border: 1px solid #bbb;
 }
 .content--pr-assignees::before {
 	content: "Assignees: ";
@@ -163,7 +165,7 @@ button[disabled] {
 	user-select: none;
 }
 .content--pr-line:nth-child(even) {
-	background-color: #ddd;
+	background-color: #e3e3e3;
 }
 
 .content--container.open.owner .content--pr-line.open.owner,
