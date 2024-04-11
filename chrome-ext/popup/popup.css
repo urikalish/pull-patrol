@@ -341,7 +341,7 @@ button[disabled] {
 	height: 64px;
 	position: absolute;
 	top: calc(50% - 32px);
-	left: calc(50%);
+	left: calc(50% - 32px);
 	animation: loading-spinner-animation 2s linear infinite;
 	user-select: none;
 }
