@@ -92,6 +92,7 @@ function onPopupLoad() {
 		}
 		configTextarea.value = initialConfigStr;
 		onConfigChange();
+		go().then(()=>{});
 	})
 }
 
@@ -256,7 +257,7 @@ function onToggleRole(role, button) {
     container.classList.toggle(role, toggleState[role]);
 	button.classList.add('button--toggle--'+toggleState[role]);
 }
-async function onClickGo() {
+async function go() {
 	log('onClickGo');
 	goButton.setAttribute('disabled', 'disabled');
 	configButton.setAttribute('disabled', 'disabled');
@@ -283,6 +284,10 @@ async function onClickGo() {
 		goButton.removeAttribute('disabled');
 		configButton.removeAttribute('disabled');
 	}
+}
+
+async function onClickGo() {
+	go();
 }
 
 document.addEventListener('DOMContentLoaded', onPopupLoad, false);
