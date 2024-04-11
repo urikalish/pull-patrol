@@ -165,16 +165,13 @@ button[disabled] {
 .content--pr-line:nth-child(even) {
 	background-color: #ddd;
 }
-.content--container.owner .content--pr-line.owner,
-.content--container.reviewer .content--pr-line.reviewer,
-.content--container.assignee .content--pr-line.assignee {
-	display: grid;
-}
-.content--container.open .content--pr-line:not(.open),
-.content--container.closed .content--pr-line:not(.closed) {
-	display: none;
-}
-.content--container.open.closed .content--pr-line {
+
+.content--container.open.owner .content--pr-line.open.owner,
+.content--container.open.reviewer .content--pr-line.open.reviewer,
+.content--container.open.assignee .content--pr-line.open.assignee,
+.content--container.closed.owner .content--pr-line.closed.owner,
+.content--container.closed.reviewer .content--pr-line.closed.reviewer,
+.content--container.closed.assignee .content--pr-line.closed.assignee {
 	display: grid;
 }
 
