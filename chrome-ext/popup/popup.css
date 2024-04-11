@@ -307,9 +307,8 @@ button[disabled] {
 	width: 64px;
 	height: 64px;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	top: calc(50%);
+	left: calc(50% - 32px);
 	animation: loading-spinner-animation 2s linear infinite;
 	user-select: none;
 }
