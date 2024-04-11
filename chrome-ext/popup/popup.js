@@ -3,6 +3,7 @@ const log = (msg) => {
 };
 
 let initialConfigStr;
+let loadingSpinner;
 let popup;
 let container;
 let configTextarea;
@@ -26,6 +27,7 @@ function setDomElements() {
 	configTextarea = document.getElementById('content--config');
 	popup = document.getElementById('popup');
 	container = document.getElementById('content--container');
+	loadingSpinner = document.getElementById('loading-spinner');
 	goButton = document.getElementById('popup-go-button');
 	configButton = document.getElementById('popup-config-button');
 	cancelButton = document.getElementById('popup-cancel-button');
@@ -245,6 +247,7 @@ async function onClickGo() {
 	log('onClickGo');
 	goButton.setAttribute('disabled', 'disabled');
 	configButton.setAttribute('disabled', 'disabled');
+	loadingSpinner.classList.toggle('hide', false);
 	try {
 		container.innerHTML = '';
 		const cnf = JSON.parse(configTextarea.value);
@@ -261,6 +264,7 @@ async function onClickGo() {
 	} catch (error) {
 		log(error);
 	} finally {
+		loadingSpinner.classList.toggle('hide', true);
 		goButton.removeAttribute('disabled');
 		configButton.removeAttribute('disabled');
 	}
